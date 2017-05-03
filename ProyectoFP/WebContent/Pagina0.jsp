@@ -78,8 +78,8 @@ if (${noErrorEmail == 'true'}) {
 		<legend><h5>Mostrar usuarios de un determinado administrador</h5></legend>
 	       <div class="input-field col l3 m6 s12">
 	       
-	   	    <input type="hidden" name="action" value="collectdata" required>
-	   
+	   	    <input type="hidden" name="action" value="collectdata">
+	   		<input type="hidden" name="format" value="html">
 	       	<input type="text" name="identificador" placeholder="Pon aquí el identificador del administrador" required>
 	       
 			<label for="identificador">Id del administrador</label>

@@ -5,10 +5,10 @@
 	import="es.ingenia.proyectofp.Usuario, es.ingenia.proyectofp.Admin"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="es">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Página 3</title>
+<title>Administración de usuarios</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -75,7 +75,7 @@ a {
 								}
 								out.print("<tr><td><input type=\"checkbox\" name=\"dni\" id=\"" + datosUsuario[i].getDni()
 										+ "\" value=\"" + datosUsuario[i].getDni() + "\"><label for=\"" + datosUsuario[i].getDni()
-										+ "\"> </td><td><a href=\"  \">" + datosUsuario[i].getDni() + "</a></td><td><a href=\"MainServlet?action=modifyuser&num=" + i + "\">" + datosUsuario[i].getNombre() + " "
+										+ "\"> </td><td><a href=\"MainServlet?action=modifyuser&num=" + i + "\">" + datosUsuario[i].getDni() + "</a></td><td><a href=\"MainServlet?action=modifyuser&num=" + i + "\">" + datosUsuario[i].getNombre() + " "
 										+ datosUsuario[i].getApellidos() + "</a></td><td>" + datosUsuario[i].getPasajero() + "</td><td>"
 										+ datosUsuario[i].getConductor() + "</td><td>" + datosUsuario[i].getFecha() + " "
 										+ datosUsuario[i].getHora() + "</td></tr>");
@@ -125,7 +125,7 @@ a {
 
 
 		</ul>
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
+		<ul class="right" id="nav-mobile" class="right hide-on-med-and-down">
 			<li><a onclick="document.forms['form4'].submit(); return false;">Cambiar
 					contraseña</a></li>
 			<li><a href="MainServlet?action=logout">Cerrar sesión</a></li>

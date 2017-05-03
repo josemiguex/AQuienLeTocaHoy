@@ -40,11 +40,9 @@ public class MainServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Context ctx;
-		Connection connection = null;
-		Statement stmt = null;
-		Statement stmt2 = null;
 		boolean registrado = false;
 		boolean existe = false;
+		boolean json = false;
 		String nextJSP = "";
 		String identificador = "";
 		String clave = "";
@@ -99,9 +97,15 @@ public class MainServlet extends HttpServlet {
 			String codadmin = obd.RecogeCodAdmin(request.getParameter("identificador"));
 			datosUsuario = obd.RecogeDatosTabla(codadmin);
 			request.setAttribute("datosUsuario", datosUsuario);
-			
-			nextJSP = "/Pagina2.jsp";
-			
+
+			if (request.getParameter("format").equals("html")) {
+
+				nextJSP = "/Pagina2.jsp";
+			} else if (request.getParameter("format").equals("json")) {
+
+				nextJSP = "/JSONServlet";
+			}
+
 			break;
 		case "annotate":
 			misession = request.getSession(false);
@@ -224,16 +228,16 @@ public class MainServlet extends HttpServlet {
 		case "deleteuser":
 
 			misession = request.getSession(false);
-			if (misession != null && misession.getAttribute("datosAdmin") != null ) {
+			if (misession != null && misession.getAttribute("datosAdmin") != null) {
 				if (request.getParameterValues("dni") != null) {
-				String[] dni = request.getParameterValues("dni");
+					String[] dni = request.getParameterValues("dni");
 
-				obd.BorrarUsuario(dni);
-				datosAdmin = (Admin) misession.getAttribute("datosAdmin");
-				datosUsuario = obd.ActualizarTabla(datosAdmin.getCodadmin());
-				request.setAttribute("datosUsuario", datosUsuario);
-				misession.setAttribute("datosAdmin", datosAdmin);
-				nextJSP = "/Pagina3.jsp";
+					obd.BorrarUsuario(dni);
+					datosAdmin = (Admin) misession.getAttribute("datosAdmin");
+					datosUsuario = obd.ActualizarTabla(datosAdmin.getCodadmin());
+					request.setAttribute("datosUsuario", datosUsuario);
+					misession.setAttribute("datosAdmin", datosAdmin);
+					nextJSP = "/Pagina3.jsp";
 				} else {
 					response.sendRedirect(request.getContextPath() + "/MainServlet?action=list");
 				}
